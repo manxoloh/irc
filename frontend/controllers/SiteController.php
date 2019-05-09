@@ -74,6 +74,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = 'home';
         return $this->render('index');
     }
 
@@ -143,6 +144,15 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+    /**
+    * Displays how it works page.
+    *
+    * @return mixed
+    */
+    public function actionHowItWorks()
+    {
+        return $this->render('how-it-works');
     }
 
     /**

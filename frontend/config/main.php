@@ -11,7 +11,7 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
-    'components' => [
+    'components' => [ 
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
@@ -44,6 +44,20 @@ return [
             ],
         ],
         */
+    ],    
+    'modules' => [
+        'employers' => [
+            'class' => 'frontend\modules\employer\Module',
+        ],
+        'candidates' => [
+            'class' => 'frontend\modules\candidate\Module',
+        ],
+        'jobs' => [
+            'class' => 'frontend\modules\job\Module',
+        ],
+        'communications' => [
+            'class' => 'frontend\modules\communications\Module',
+        ],
     ],
     'params' => $params,
 ];

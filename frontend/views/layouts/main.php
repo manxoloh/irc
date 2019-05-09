@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -49,8 +50,12 @@ AppAsset::register($this);
 			<div class="btn-extars">
 				<a href="#" title="" class="post-job-btn"><i class="la la-plus"></i>Post Jobs</a>
 				<ul class="account-btns">
-					<li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
-					<li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
+					<?php if(Yii::$app->user->isGuest) { ?>
+    					<li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
+    					<li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
+    				<?php } else { ?>
+    					<li class="<?= Url::to(['/']) ?>"><a title=""><i class="la la-user"></i> Account</a></li>
+    				<?php } ?>
 				</ul>
 			</div><!-- Btn Extras -->
 			<form class="res-search">
@@ -59,103 +64,22 @@ AppAsset::register($this);
 			</form>
 			<div class="responsivemenu">
 				<ul>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Home</a>
-							<ul>
-								<li><a href="index.html" title="">Home Layout 1</a></li>
-								<li><a href="index2.html" title="">Home Layout 2</a></li>
-								<li><a href="index3.html" title="">Home Layout 3</a></li>
-								<li><a href="index4.html" title="">Home Layout 4</a></li>
-								<li><a href="index5.html" title="">Home Layout 5</a></li>
-								<li><a href="index6.html" title="">Home Layout 6</a></li>
-								<li><a href="index7.html" title="">Home Layout 7</a></li>
-								<li><a href="index8.html" title="">Home Layout 8</a></li>
-							</ul>
+						<li>
+							<a href="<?= Url::to(['/']) ?>" title="Home">Home</a>
 						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Employers</a>
-							<ul>
-								<li><a href="employer_list1.html" title=""> Employer List 1</a></li>
-								<li><a href="employer_list2.html" title="">Employer List 2</a></li>
-								<li><a href="employer_list3.html" title="">Employer List 3</a></li>
-								<li><a href="employer_list4.html" title="">Employer List 4</a></li>
-								<li><a href="employer_single1.html" title="">Employer Single 1</a></li>
-								<li><a href="employer_single2.html" title="">Employer Single 2</a></li>
-								<li class="menu-item-has-children">
-									<a href="#" title="">Employer Dashboard</a>
-									<ul>
-										<li><a href="employer_manage_jobs.html" title="">Employer Job Manager</a></li>
-										<li><a href="employer_packages.html" title="">Employer Packages</a></li>
-										<li><a href="employer_post_new.html" title="">Employer Post New</a></li>
-										<li><a href="employer_profile.html" title="">Employer Profile</a></li>
-										<li><a href="employer_resume.html" title="">Employer Resume</a></li>
-										<li><a href="employer_transactions.html" title="">Employer Transaction</a></li>
-										<li><a href="employer_job_alert.html" title="">Employer Job Alert</a></li>
-										<li><a href="employer_change_password.html" title="">Employer Change Password</a></li>
-									</ul>
-								</li>
-							</ul>
+						<li>
+							<a href="<?= Url::to(['/employers']) ?>" title="Employers">Employers</a>
 						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Candidates</a>
-							<ul>
-								<li><a href="candidates_list.html" title="">Candidates List 1</a></li>
-								<li><a href="candidates_list2.html" title="">Candidates List 2</a></li>
-								<li><a href="candidates_list3.html" title="">Candidates List 3</a></li>
-								<li><a href="candidates_single.html" title="">Candidates Single 1</a></li>
-								<li><a href="candidates_single2.html" title="">Candidates Single 2</a></li>
-								<li class="menu-item-has-children">
-									<a href="#" title="">Candidates Dashboard</a>
-									<ul>
-										<li><a href="candidates_my_resume.html" title="">Candidates Resume</a></li>
-										<li><a href="candidates_my_resume_add_new.html" title="">Candidates Resume new</a></li>
-										<li><a href="candidates_profile.html" title="">Candidates Profile</a></li>
-										<li><a href="candidates_shortlist.html" title="">Candidates Shortlist</a></li>
-										<li><a href="candidates_job_alert.html" title="">Candidates Job Alert</a></li>
-										<li><a href="candidates_dashboard.html" title="">Candidates Dashboard</a></li>
-										<li><a href="candidates_cv_cover_letter.html" title="">CV Cover Letter</a></li>
-										<li><a href="candidates_change_password.html" title="">Change Password</a></li>
-										<li><a href="candidates_applied_jobs.html" title="">Candidates Applied Jobs</a></li>
-									</ul>
-								</li>
-							</ul>
+						<li>
+							<a href="<?= Url::to(['/candidates']) ?>" title="Candidates">Candidates</a>
 						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Blog</a>
-							<ul>
-								<li><a href="blog_list.html"> Blog List 1</a></li>
-								<li><a href="blog_list2.html">Blog List 2</a></li>
-								<li><a href="blog_list3.html">Blog List 3</a></li>
-								<li><a href="blog_single.html">Blog Single</a></li>
-							</ul>
+						<li>
+							<a href="<?= Url::to(['/jobs']) ?>" title="Jobs">Jobs</a>
 						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Job</a>
-							<ul>
-								<li><a href="job_list_classic.html">Job List Classic</a></li>
-								<li><a href="job_list_grid.html">Job List Grid</a></li>
-								<li><a href="job_list_modern.html">Job List Modern</a></li>
-								<li><a href="job_single1.html">Job Single 1</a></li>
-								<li><a href="job_single2.html">Job Single 2</a></li>
-								<li><a href="job-single3.html">Job Single 3</a></li>
-							</ul>
+						<li>
+							<a href="<?= Url::to(['/site/how-it-works']) ?>" title="Jobs">How it Works</a>
 						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Pages</a>
-							<ul>
-								<li><a href="about.html" title="">About Us</a></li>
-								<li><a href="404.html" title="">404 Error</a></li>
-								<li><a href="contact.html" title="">Contact Us 1</a></li>
-								<li><a href="contact2.html" title="">Contact Us 2</a></li>
-								<li><a href="faq.html" title="">FAQ's</a></li>
-								<li><a href="how_it_works.html" title="">How it works</a></li>
-								<li><a href="login.html" title="">Login</a></li>
-								<li><a href="pricing.html" title="">Pricing Plans</a></li>
-								<li><a href="register.html" title="">Register</a></li>
-								<li><a href="terms_and_condition.html" title="">Terms & Condition</a></li>
-							</ul>
-						</li>
-					</ul>
+				</ul>
 			</div>
 		</div>
 	</div>
@@ -164,118 +88,55 @@ AppAsset::register($this);
 		<div class="menu-sec">
 			<div class="container">
 				<div class="logo">
-					<a href="index.html" title=""><img class="hidesticky" src="images/resource/logo.png" alt="" /><img class="showsticky" src="images/resource/logo10.png" alt="" /></a>
+					<a href="<?= Url::to(['/'])?>" title=""><img class="hidesticky" src="images/resource/logo.png" alt="" /><img class="showsticky" src="images/resource/logo.png" alt="" /></a>
 				</div><!-- Logo -->
 				<div class="btn-extars">
 					<a href="#" title="" class="post-job-btn"><i class="la la-plus"></i>Post Jobs</a>
 					<ul class="account-btns">
-						<li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
-						<li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
+					<?php if(Yii::$app->user->isGuest) { ?>
+    					<li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
+    					<li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
+    				<?php } else { ?>
+    					<li class="<?= Url::to(['/']) ?>"><a title=""><i class="la la-user"></i> Account</a></li>
+    				<?php } ?>
 					</ul>
 				</div><!-- Btn Extras -->
 				<nav>
 					<ul>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Home</a>
-							<ul>
-								<li><a href="index.html" title="">Home Layout 1</a></li>
-								<li><a href="index2.html" title="">Home Layout 2</a></li>
-								<li><a href="index3.html" title="">Home Layout 3</a></li>
-								<li><a href="index4.html" title="">Home Layout 4</a></li>
-								<li><a href="index5.html" title="">Home Layout 5</a></li>
-								<li><a href="index6.html" title="">Home Layout 6</a></li>
-								<li><a href="index7.html" title="">Home Layout 7</a></li>
-								<li><a href="index8.html" title="">Home Layout 8</a></li>
-							</ul>
+						<li>
+							<a href="<?= Url::to(['/']) ?>" title="Home">Home</a>
 						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Employers</a>
-							<ul>
-								<li><a href="employer_list1.html" title=""> Employer List 1</a></li>
-								<li><a href="employer_list2.html" title="">Employer List 2</a></li>
-								<li><a href="employer_list3.html" title="">Employer List 3</a></li>
-								<li><a href="employer_list4.html" title="">Employer List 4</a></li>
-								<li><a href="employer_single1.html" title="">Employer Single 1</a></li>
-								<li><a href="employer_single2.html" title="">Employer Single 2</a></li>
-								<li class="menu-item-has-children">
-									<a href="#" title="">Employer Dashboard</a>
-									<ul>
-										<li><a href="employer_manage_jobs.html" title="">Employer Job Manager</a></li>
-										<li><a href="employer_packages.html" title="">Employer Packages</a></li>
-										<li><a href="employer_post_new.html" title="">Employer Post New</a></li>
-										<li><a href="employer_profile.html" title="">Employer Profile</a></li>
-										<li><a href="employer_resume.html" title="">Employer Resume</a></li>
-										<li><a href="employer_transactions.html" title="">Employer Transaction</a></li>
-										<li><a href="employer_job_alert.html" title="">Employer Job Alert</a></li>
-										<li><a href="employer_change_password.html" title="">Employer Change Password</a></li>
-									</ul>
-								</li>
-							</ul>
+						<li>
+							<a href="<?= Url::to(['/employers']) ?>" title="Employers">Employers</a>
 						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Candidates</a>
-							<ul>
-								<li><a href="candidates_list.html" title="">Candidates List 1</a></li>
-								<li><a href="candidates_list2.html" title="">Candidates List 2</a></li>
-								<li><a href="candidates_list3.html" title="">Candidates List 3</a></li>
-								<li><a href="candidates_single.html" title="">Candidates Single 1</a></li>
-								<li><a href="candidates_single2.html" title="">Candidates Single 2</a></li>
-								<li class="menu-item-has-children">
-									<a href="#" title="">Candidates Dashboard</a>
-									<ul>
-										<li><a href="candidates_my_resume.html" title="">Candidates Resume</a></li>
-										<li><a href="candidates_my_resume_add_new.html" title="">Candidates Resume new</a></li>
-										<li><a href="candidates_profile.html" title="">Candidates Profile</a></li>
-										<li><a href="candidates_shortlist.html" title="">Candidates Shortlist</a></li>
-										<li><a href="candidates_job_alert.html" title="">Candidates Job Alert</a></li>
-										<li><a href="candidates_dashboard.html" title="">Candidates Dashboard</a></li>
-										<li><a href="candidates_cv_cover_letter.html" title="">CV Cover Letter</a></li>
-										<li><a href="candidates_change_password.html" title="">Change Password</a></li>
-										<li><a href="candidates_applied_jobs.html" title="">Candidates Applied Jobs</a></li>
-									</ul>
-								</li>
-							</ul>
+						<li>
+							<a href="<?= Url::to(['/candidates']) ?>" title="Candidates">Candidates</a>
 						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Blog</a>
-							<ul>
-								<li><a href="blog_list.html"> Blog List 1</a></li>
-								<li><a href="blog_list2.html">Blog List 2</a></li>
-								<li><a href="blog_list3.html">Blog List 3</a></li>
-								<li><a href="blog_single.html">Blog Single</a></li>
-							</ul>
+						<li>
+							<a href="<?= Url::to(['/jobs']) ?>" title="Jobs">Jobs</a>
 						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Job</a>
-							<ul>
-								<li><a href="job_list_classic.html">Job List Classic</a></li>
-								<li><a href="job_list_grid.html">Job List Grid</a></li>
-								<li><a href="job_list_modern.html">Job List Modern</a></li>
-								<li><a href="job_single1.html">Job Single 1</a></li>
-								<li><a href="job_single2.html">Job Single 2</a></li>
-								<li><a href="job-single3.html">Job Single 3</a></li>
-							</ul>
-						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Pages</a>
-							<ul>
-								<li><a href="about.html" title="">About Us</a></li>
-								<li><a href="404.html" title="">404 Error</a></li>
-								<li><a href="contact.html" title="">Contact Us 1</a></li>
-								<li><a href="contact2.html" title="">Contact Us 2</a></li>
-								<li><a href="faq.html" title="">FAQ's</a></li>
-								<li><a href="how_it_works.html" title="">How it works</a></li>
-								<li><a href="login.html" title="">Login</a></li>
-								<li><a href="pricing.html" title="">Pricing Plans</a></li>
-								<li><a href="register.html" title="">Register</a></li>
-								<li><a href="terms_and_condition.html" title="">Terms & Condition</a></li>
-							</ul>
+						<li>
+							<a href="<?= Url::to(['/site/how-it-works']) ?>" title="Jobs">How it Works</a>
 						</li>
 					</ul>
 				</nav><!-- Menus -->
 			</div>
 		</div>
 	</header>
+	<section class="overlape">
+		<div class="block no-padding">
+			<div data-velocity="-.1" style="background: url(images/resource/mslider1.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner-header">
+							<h3><?= $this->title ? $this->title : "eHorizon iRecruitment" ?></h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
         <?= $content ?>
 	<footer>
 		<div class="block">
@@ -287,15 +148,13 @@ AppAsset::register($this);
 								<div class="logo">
 									<a href="index.html" title=""><img src="images/resource/logo.png" alt="" /></a>
 								</div>
-								<span>Collin Street West, Victor 8007, Australia.</span>
-								<span>+1 246-345-0695</span>
-								<span><a href="https://grandetest.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="95fcfbf3fad5fffaf7fde0fbe1bbf6faf8">[email&#160;protected]</a></span>
+								<span>West Point Building, Mpaka Road, Parklands </span>
+								<span>+ 254 20 7122971-3 / +254 722 207450 </span>
+								<span><a href="mailto:info@stl-horizon.com" class="__cf_email__"> [info@stl-horizon.com]  </a></span>
 								<div class="social">
-									<a href="#" title=""><i class="fa fa-facebook"></i></a>
-									<a href="#" title=""><i class="fa fa-twitter"></i></a>
-									<a href="#" title=""><i class="fa fa-linkedin"></i></a>
-									<a href="#" title=""><i class="fa fa-pinterest"></i></a>
-									<a href="#" title=""><i class="fa fa-behance"></i></a>
+									<a href="http://facebook.com/stllimited/" target="_blank" title=""><i class="fa fa-facebook"></i></a>
+									<a href="http://twitter.com/STLHorizon" target="_blank" title=""><i class="fa fa-twitter"></i></a>
+									<a href="http://linkedin.com/in/software-technologies-limited-68a27354/" target="_blank" title=""><i class="fa fa-linkedin"></i></a>
 								</div>
 							</div><!-- About Widget -->
 						</div>
@@ -306,18 +165,13 @@ AppAsset::register($this);
 							<div class="link_widgets">
 								<div class="row">
 									<div class="col-lg-6">
-										<a href="#" title="">Privacy & Seurty </a>
-										<a href="#" title="">Terms of Serice</a>
-										<a href="#" title="">Communications </a>
-										<a href="#" title="">Referral Terms </a>
-										<a href="#" title="">Lending Licnses </a>
-										<a href="#" title="">Disclaimers </a>	
+										<a href="https://www.stl-horizon.com/privacy-policy/" title="Privacy Policy">Privacy Policy </a>
+										<a href="https://www.stl-horizon.com/terms-and-conditions/" title="Terms & Conditions">Terms & Conditions</a>
+										<a href="#" title="Disclaimer">Disclaimer</a>
 									</div>
 									<div class="col-lg-6">
-										<a href="#" title="">Support </a>
-										<a href="#" title="">How It Works </a>
-										<a href="#" title="">For Employers </a>
-										<a href="#" title="">Underwriting </a>
+										<a href="https://www.stl-horizon.com/support/" title="Customer Support">Support </a>
+										<a href="<?= Url::to(['/site/how-it-works'])?>" title="How It Works">How It Works </a>
 										<a href="#" title="">Contact Us</a>
 									</div>
 								</div>
@@ -330,12 +184,9 @@ AppAsset::register($this);
 							<div class="link_widgets">
 								<div class="row">
 									<div class="col-lg-12">
-										<a href="#" title="">US Jobs</a>	
-										<a href="#" title="">Canada Jobs</a>	
-										<a href="#" title="">UK Jobs</a>	
-										<a href="#" title="">Emplois en Fnce</a>	
-										<a href="#" title="">Jobs in Deuts</a>	
-										<a href="#" title="">Vacatures China</a>	
+										<a href="#" title="">Nairobi</a>	
+										<a href="#" title="">Mombasa</a>	
+										<a href="#" title="">Nakuru</a>	
 									</div>
 								</div>
 							</div>
@@ -353,7 +204,7 @@ AppAsset::register($this);
 			</div>
 		</div>
 		<div class="bottom-line">
-			<span>© 2018 Jobhunt All rights reserved. Design by Creative Layers</span>
+			<span>&copy; <?= date("Y") ?> eHorizon iRecruitment. All rights reserved. Powered by <a href="www.stl-horizon.com" target="_blank">Software Technologies Limited</a></span>
 			<a href="#scrollup" class="scrollup" title=""><i class="la la-arrow-up"></i></a>
 		</div>
 	</footer>
